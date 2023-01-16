@@ -1,6 +1,6 @@
-from banking.entity.Person import Person
+from banking.entity import Person
 from banking.model import AccountHolder
-from banking.model import Account
+from banking.model.Account import Account
 
 
 class CommercialAccount(Account):

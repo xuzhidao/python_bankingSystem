@@ -1,4 +1,5 @@
-from banking.model import Account, AccountHolder
+from banking.model.Account import Account
+from banking.model import AccountHolder
 
 
 class CustomerAccount(Account):

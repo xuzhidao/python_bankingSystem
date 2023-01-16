@@ -1,4 +1,6 @@
-from banking.entity import CommercialAccount, CustomerAccount
+from banking.entity.CommercialAccount import CommercialAccount
+from banking.entity.CustomerAccount import CustomerAccount
+from banking.support.AccountNumberGenerator import AccountNumberGenerator
 
 
 class Bank:
@@ -10,12 +12,14 @@ class Bank:
         return self.accounts[account_number]
 
     def open_commercial_account(self, company, pin, starting_deposit):
-        commercial_account = CommercialAccount(company, 45, pin, starting_deposit)
+        acct_num = AccountNumberGenerator().generate_company_account_number(company)
+        commercial_account = CommercialAccount(company, acct_num, pin, starting_deposit)
         self.accounts[commercial_account.account_number] = commercial_account
         return commercial_account.account_number
 
     def open_customer_account(self, person, pin, starting_deposit):
-        customer_account = CustomerAccount(person, 45, pin, starting_deposit)
+        acct_num = AccountNumberGenerator().generate_personal_account_number(person)
+        customer_account = CustomerAccount(person, acct_num, pin, starting_deposit)
         self.accounts[customer_account.account_number] = customer_account
         return customer_account.account_number
 

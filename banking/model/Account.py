@@ -1,11 +1,9 @@
-import string
-
 from banking.model.AccountHolder import AccountHolder
 
 
 class Account:
 
-    def __init__(self, holder: AccountHolder, account_number, pin: string, starting_deposit: float):
+    def __init__(self, holder: AccountHolder, account_number, pin, starting_deposit: float):
         self.account_holder = holder
         self.account_number = account_number
         self.pin = pin
