@@ -17,3 +17,9 @@ class Account:
 
     def debit_account(self, amount):
         pass
+
+
+class InsufficientBalanceError:
+
+    def __init__(self):
+        pass

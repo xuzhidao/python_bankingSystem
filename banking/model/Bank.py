@@ -23,11 +23,11 @@ class Bank:
         self.accounts[customer_account.account_number] = customer_account
         return customer_account.account_number
 
-    def authenticate_user(self, account_number, pin):
+    def authenticate_user(self, account_number, input_pin):
         account = self.accounts[account_number]
         if account is None:
             return False
-        if account.pin != pin:
+        if account.pin != input_pin:
             return False
         return True
 

@@ -19,3 +19,8 @@ class Transaction:
     def debit(self, amount):
         # if balance is not enough, throw exception
         pass
+
+
+class InvalidPinError:
+    def __init__(self):
+        pass
