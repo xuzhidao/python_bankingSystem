@@ -53,12 +53,41 @@ class MyTestCase(unittest.TestCase):
         balance = self.bank.get_account_balance(self.account_julia)
         self.assertEqual(balance_init, balance+credit_amount, f"Init balance is {balance_init}, current balance is {balance}")
 
+    def test_credit_suspended_personal_account(self):
+        print('Test credit suspended personal account')
+        credit_amount = 31.0
+        balance_init = self.bank.get_account_balance(self.account_julia)
+        try:
+            self.bank.credit(self.account_julia, credit_amount)
+        except InvalidAccountError:
+            self.assertTrue(True, 'Exception captured')
+        self.fail('Test failed, should throw error')
+
+
     def test_transaction_invalid_pin(self):
         print('Test invalid pin')
 
         try:
-            txn = Transaction(self.bank,self.account_john,'welcome')
+            txn = Transaction(self.bank, self.account_john, 'welcome')
         except InvalidPinError:
+            self.assertTrue(True, 'Exception captured')
+        self.fail('Test failed, should throw error')
+
+    def test_transaction_non_existing_company(self):
+        print('Test non existing company')
+
+        try:
+            txn = Transaction(self.bank, 'dummy_company_accnt', 'welcome')
+        except NewErrorToBeCreated:
+            self.assertTrue(True, 'Exception captured')
+        self.fail('Test failed, should throw error')
+
+    def test_transaction_non_existing_company(self):
+        print('Test non existing company')
+
+        try:
+            txn = Transaction(self.bank, 'dummy_company_accnt', 'welcome')
+        except NewErrorToBeCreated:
             self.assertTrue(True, 'Exception captured')
         self.fail('Test failed, should throw error')
 
