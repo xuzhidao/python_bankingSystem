@@ -4,8 +4,7 @@ class Notebook(object):
 
     def show(self):
         print('Container1 list:')
-        for item in self.lista:
-            print(item.content)
+        # Adding code to list each element
 
 
 class Binder(object):
@@ -14,16 +13,18 @@ class Binder(object):
 
     def show(self):
         print('Container2 list:')
-        for item in self.lista:
-            print(item.content)
+        # Adding code to list each element
 
 
 class Note(object):
     def __init__(self, txt):
-        self.content = txt
+        pass
+    # Adding code
 
     # create Notebook instance and store Note instance in 'lista' list argument
 
+
+common_element = Note(5)
 
 a = Notebook(Note(5))
 a.show()
@@ -32,9 +33,10 @@ a.show()
 b = Binder(a.lista[0])
 b.show()
 
+c = Binder(common_element)
+
 # check if both containers include the same object
 print(a.lista == b.lista)
-
 
 # change content of the Note instance via Notebook instance
 a.lista[0].content = 10
