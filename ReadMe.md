@@ -1,4 +1,4 @@
-# Python Code Exercis
+# Python Code Exercise
 ## _Standard Chartered Bank SG_
 
 ## You may choose
