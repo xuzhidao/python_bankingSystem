@@ -5,6 +5,7 @@ from banking.entity.Person import Person
 from banking.entity.Transaction import Transaction, InvalidPinError
 from banking.model.Account import InsufficientBalanceError
 from banking.model.Bank import Bank
+from banking.support.error import InvalidAccountError, TransactionNotAllowedError
 
 
 class MyTestCase(unittest.TestCase):
@@ -63,7 +64,6 @@ class MyTestCase(unittest.TestCase):
             self.assertTrue(True, 'Exception captured')
         self.fail('Test failed, should throw error')
 
-
     def test_transaction_invalid_pin(self):
         print('Test invalid pin')
 
@@ -78,7 +78,7 @@ class MyTestCase(unittest.TestCase):
 
         try:
             txn = Transaction(self.bank, 'dummy_company_accnt', 'welcome')
-        except NewErrorToBeCreated:
+        except TransactionNotAllowedError:
             self.assertTrue(True, 'Exception captured')
         self.fail('Test failed, should throw error')
 
@@ -87,7 +87,7 @@ class MyTestCase(unittest.TestCase):
 
         try:
             txn = Transaction(self.bank, 'dummy_company_accnt', 'welcome')
-        except NewErrorToBeCreated:
+        except TransactionNotAllowedError:
             self.assertTrue(True, 'Exception captured')
         self.fail('Test failed, should throw error')
 
